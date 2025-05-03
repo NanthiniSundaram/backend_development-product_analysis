@@ -1,0 +1,254 @@
+
+
+
+/* Style for dates from adjacent months - completely disable coloring */
+.rdrDayOutsideMonth {
+    opacity: 0.3 !important;
+    pointer-events: none !important;
+    cursor: default !important;
+    background: none !important;
+}
+
+.rdrDayOutsideMonth .rdrDayNumber span {
+    color: #ccc !important;
+}
+
+/* Force override to prevent any styling on outside month days */
+.rdrDayOutsideMonth .rdrStartEdge,
+.rdrDayOutsideMonth .rdrEndEdge,
+.rdrDayOutsideMonth .rdrInRange,
+.rdrDayOutsideMonth .rdrSelected,
+.rdrDayOutsideMonth .rdrDayStartPreview,
+.rdrDayOutsideMonth .rdrDayInPreview,
+.rdrDayOutsideMonth .rdrDayEndPreview {
+    background: none !important;
+    color: #ccc !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove any hover effects on outside month days */
+.rdrDayOutsideMonth:hover {
+    background: none !important;
+    border: none !important;
+}
+
+/* Disable pointer events and dull the color for passive days */
+.rdrDay.rdrDayPassive,
+.rdrDay.rdrDayPassive .rdrDayNumber span {
+    color: #ccc !important;
+    pointer-events: none !important;
+    opacity: 0.6 !important;
+    cursor: not-allowed;
+    background: none !important;
+}
+
+/* Remove selection or hover background from disabled days */
+.rdrDay.rdrDayPassive .rdrInRange,
+.rdrDay.rdrDayPassive .rdrStartEdge,
+.rdrDay.rdrDayPassive .rdrEndEdge,
+.rdrDay.rdrDayPassive .rdrSelected,
+.rdrDay.rdrDayPassive .rdrDayStartPreview,
+.rdrDay.rdrDayPassive .rdrDayInPreview,
+.rdrDay.rdrDayPassive .rdrDayEndPreview {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Completely hide any styling on range selection for outside days */
+.rdrDayStartPreview.rdrDayOutsideMonth,
+.rdrDayInPreview.rdrDayOutsideMonth,
+.rdrDayEndPreview.rdrDayOutsideMonth,
+.rdrInRange.rdrDayOutsideMonth {
+    background: transparent !important;
+}
+
+/* Enhanced styling for calendar day cells */
+.rdrDay {
+    position: relative !important;
+    /* width: 40px !important; */
+    height: 38px !important;
+    /* margin: 2px !important; */
+    color: black !important;
+}
+
+.rdrDay .rdrDayNumber {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.rdrDay .rdrDayNumber span {
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+/* Single date selection - when start and end are the same */
+.rdrDay.rdrDayStartEdge.rdrDayEndEdge .rdrDayNumber,
+.rdrDay.rdrDayStartPreview.rdrDayEndPreview .rdrDayNumber {
+    background-color: #303030 !important;
+    border-radius: 50% !important;
+    color: white !important;
+    font-weight: bold !important;
+    z-index: 5 !important;
+    background-color: red !important;
+}
+
+/* Start date of range - distinct black background with left border radius */
+.rdrDay.rdrDayStartEdge:not(.rdrDayEndEdge) .rdrDayNumber,
+.rdrDay.rdrDayStartPreview:not(.rdrDayEndPreview) .rdrDayNumber {
+    background-color: #303030 !important;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+    color: white !important;
+    font-weight: bold !important;
+    z-index: 5 !important;
+}
+
+/* End date of range - distinct black background with right border radius */
+.rdrDay.rdrDayEndEdge:not(.rdrDayStartEdge) .rdrDayNumber,
+.rdrDay.rdrDayEndPreview:not(.rdrDayStartPreview) .rdrDayNumber {
+    background-color: #303030 !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    color: white !important;
+    font-weight: bold !important;
+    z-index: 5 !important;
+}
+
+/* Days in between start and end - gray background with black text */
+.rdrDay.rdrInRange:not(.rdrDayStartEdge):not(.rdrDayEndEdge) .rdrDayNumber,
+.rdrDay.rdrDayInPreview:not(.rdrDayStartPreview):not(.rdrDayEndPreview) .rdrDayNumber {
+    background-color: #f1f1f1 !important;
+    color: #333 !important;
+    z-index: 1 !important;
+}
+
+/* Fix the in-range selection to extend fully between days */
+.rdrDay.rdrInRange:after,
+.rdrDay.rdrDayInPreview:after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -2px !important;
+    right: -2px !important;
+    bottom: 0 !important;
+    background-color: #f1f1f1 !important;
+    z-index: 0 !important;
+}
+
+/* Make sure start/end edges have proper z-index and no overlapping backgrounds */
+.rdrDay.rdrDayStartEdge.rdrInRange:after,
+.rdrDay.rdrDayStartPreview.rdrDayInPreview:after {
+    left: 50% !important;
+}
+
+.rdrDay.rdrDayEndEdge.rdrInRange:after,
+.rdrDay.rdrDayEndPreview.rdrDayInPreview:after {
+    right: 50% !important;
+}
+
+/* Enhance hover effects for better interaction */
+.rdrDay:not(.rdrDayPassive):not(.rdrDayOutsideMonth):hover .rdrDayNumber {
+    /* background-color: rgba(0, 0, 0, 0.05) !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important; */
+    /* transition: all 0.2s ease !important; */
+}
+
+/* Ensure proper rendering of day numbers */
+.rdrDay .rdrDayNumber span {
+    font-size: 14px !important;
+}
+
+/* Add slight shadow to selected dates for better visual depth */
+.rdrDay.rdrDayStartEdge .rdrDayNumber,
+.rdrDay.rdrDayEndEdge .rdrDayNumber,
+.rdrDay.rdrDayStartPreview .rdrDayNumber,
+.rdrDay.rdrDayEndPreview .rdrDayNumber {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Add transition effects for smoother interactions */
+.rdrDay .rdrDayNumber {
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+
+/* Enhance the current day styling */
+.rdrDayToday .rdrDayNumber span:after {
+    /* background: #555 !important; */
+    background: none;
+    /* border: 1px solid gray; */
+}
+
+/* Make current date more fisible */
+.rdrDayToday:not(.rdrDaySelected) .rdrDayNumber span:after {
+    /* background: #303030 !important; */
+    /* bottom: 4px !important; */
+    /* height: 32px !important;
+    padding-bottom: 10px !important;
+    width: 35px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid gray;
+    border-radius: 50% !important; */
+    /* width: 3px !important; */
+}
+
+
+
+
+
+  
+  .rdrMonthName {
+    display: none;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 10px 0 !important;
+    color: #333;
+  }
+  
+  .rdrStartEdge{
+    color: white !important; /* White text */
+  background-color: #111827 !important; /* Dark background */
+  border-bottom-left-radius: 10px !important;
+  border-top-left-radius: 10px !important;
+}
+
+.rdrEndEdge {
+    color: white !important; /* White text */
+  background-color: #111827 !important; /* Dark background */
+  border-bottom-right-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+}
+
+  
+  /* Compact mobile layout */
+  @media (max-width: 768px) {
+    .rdrCalendarWrapper {
+      font-size: 12px;
+    }
+    
+    .rdrDay {
+      width: 32px !important;
+      height: 32px !important;
+    }
+    
+    .rdrWeekDay {
+      width: 32px !important;
+    }
+    
+    .rdrMonthName {
+      font-size: 14px;
+    }
+  }

@@ -1,0 +1,55 @@
+/* Add to your App.css */
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  .sticky-first-cell {
+    position: sticky !important;
+    left: 0 !important;
+    z-index: 2 !important;
+    background-color: #FFF !important;
+    background-clip: padding-box;
+  }
+  
+  .sticky-last-cell {
+    position: sticky !important;
+    right: 0 !important;
+    z-index: 2 !important;
+    background-color: #FFF !important;
+    background-clip: padding-box;
+  }
+  
+  /* For the header cells that need to be sticky */
+  th.sticky-header-first {
+    position: sticky !important;
+    left: 0 !important;
+    z-index: 3 !important; /* Higher than body cells */
+    background-color: #F9FAFB !important;
+  }
+  
+  th.sticky-header-last {
+    position: sticky !important;
+    right: 0 !important;
+    z-index: 3 !important;
+    background-color: #F9FAFB !important;
+  }
